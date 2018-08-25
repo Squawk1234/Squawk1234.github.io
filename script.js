@@ -14,14 +14,11 @@ let textContent =  $("button").on("click", (event) => {
   $(".divBody").append(textTitle + textContent);
 
 
-let initialData = [
-    {
-      title: "First Post",
-      text: "Text of the first one"
-    },
-    
-  ];
-
+  let path = "posts/1";
+  let initialData = {
+    title: "My first saved blog post",
+    text: "Some hilarious content, which proves how awesome I am."
+  };
 
 
   $("button").on("click", (event) => {
@@ -32,5 +29,9 @@ let initialData = [
   });
   })
 
+
+
+
+fb.ref(path).set(dataToSave);
 
  
