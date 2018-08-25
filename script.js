@@ -1,37 +1,39 @@
 
+let i = 0;
+
+fb.ref("posts/").once('value').then(data => {
+    let savedPosts = data.val();
+    console.log(savedPosts);
+    if ( savedPosts !== null ) {
+    savedPosts.forEach((post) =>    {
+    $(".post_header").append("<h4>" + post["title"] + "</h4>")
+    $(".post_header").append("<p>" + post["text"] + "</p>") 
+    
+    }) }  
+});
+
 
 
 let textTitle =  $("button").on("click", (event) => {
     event.preventDefault();
-    $(".post_header").append("<h4>" + $(".inputTitle").val() + "</h4>") });
+    $(".post_header").append("<h4>" +  $(".inputTitle").val() + "</h4>") 
+});
 
 let textContent =  $("button").on("click", (event) => {
     event.preventDefault();
-    $(".post_header").append("<p>" + $(".inputText").val() + "</p>") });
+    $(".post_header").append("<p>" + $(".inputText").val() + "</p>") 
+});
 
 
 
-  $(".divBody").append(textTitle + textContent);
+$(".divBody").append(textTitle + textContent);
 
 
-  let path = "posts/1";
-  let initialData = {
-    title: "My first saved blog post",
-    text: "Some hilarious content, which proves how awesome I am."
-  };
-
-
-  $("button").on("click", (event) => {
-  initialData.push(
-      {
+$("button").on("click", (event) => {
+   let blogpost =  {
       title: $(".inputTitle").val(),
       text: $(".inputText").val()
-  });
-  })
-
-
-
-
-fb.ref(path).set(initialData);
-
- 
+  };
+  let path = "posts/" + i++;
+  fb.ref(path).set(blogpost);
+})
