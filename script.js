@@ -3,6 +3,7 @@ let i = 0;
 
 fb.ref("posts/").once('value').then(data => {
     let savedPosts = data.val();
+    i = savedPosts.length;
     console.log(savedPosts);
     if ( savedPosts !== null ) {
     savedPosts.forEach((post) =>    {
@@ -36,4 +37,5 @@ $("button").on("click", (event) => {
   };
   let path = "posts/" + i++;
   fb.ref(path).set(blogpost);
+  
 })
