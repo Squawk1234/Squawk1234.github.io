@@ -32,6 +32,6 @@ let textContent =  $("button").on("click", (event) => {
 
 
 
-fb.ref(path).set(dataToSave);
+fb.ref(path).set(initialData);
 
  
